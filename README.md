@@ -29,3 +29,13 @@ npm install fs os express
 # Configuração das estações
 
 * wpa_supplicant.conf: arquivo com a configuração do wpa-supplicant para conectar no AP
+
+
+# Dicas de instalação
+
+Se você encontrar um erro do tipo __"Error: CERT_UNTRUSTED"__, você precisará executar um ou ambos os comandos listados abaixo:
+
+```
+npm config set strict-ssl false
+npm config set registry="http://registry.npmjs.org/"
+```
