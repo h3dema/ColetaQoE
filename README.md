@@ -6,7 +6,7 @@ Para obter dados de video
 ## AP
 
 ```
-sudo apt-get install -y hostapd iw tcpdump iwconfig
+sudo apt-get install -y hostapd iw tcpdump wireless-tools
 ```
 
 ## Estação
