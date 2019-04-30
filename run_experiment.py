@@ -29,7 +29,7 @@ def check_dep(user, dest, list_packages):
 
 def check_dep_ap(user, dest):
     needs_install = check_dep(user, dest,
-                              list_packages=['hostapd', 'iw', 'iwconfig']
+                              list_packages=['hostapd', 'iw', 'wireless-tools']
                               )
     if len(needs_install) > 0:
         print('The following packages are needed:', ','.join(needs_install))
