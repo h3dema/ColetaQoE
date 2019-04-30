@@ -33,9 +33,17 @@ npm install fs os express
 
 # Dicas de instalação
 
+## Erro de acesso
 Se você encontrar um erro do tipo __"Error: CERT_UNTRUSTED"__, você precisará executar um ou ambos os comandos listados abaixo:
 
 ```
 npm config set strict-ssl false
 npm config set registry="http://registry.npmjs.org/"
+```
+## Biblioteca faltando
+
+Se você encontrar o erro __"Error: Cannot find module 'body-parser'"__ ao tentar executar o servidor node.js, você precisará instalar um modulo adicional:
+
+```
+npm install body-parser
 ```
