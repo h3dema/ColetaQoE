@@ -52,7 +52,7 @@ Destino         Roteador        MáscaraGen.    Opções Métrica Ref   Uso Ifac
                    |      AP    |                           |     STA    |
      150.164.10.yy |            |           wifi            |            |
       internet ----|eth0  wlan0 |---------------------------|wlan0   eth0|---- rede de controle
-          |        |192.168.0.1    192.168.0.x |            |            |150.164.10.yy
+          |        |192.168.0.1    192.168.0.x              |            |150.164.10.yy
           |        +------------+                           +------------+
           |
           |
