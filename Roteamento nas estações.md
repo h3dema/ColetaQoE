@@ -1,3 +1,29 @@
+# Diagrama de rede
+
+
+* Rede wifi: 192.168.0.0/24
+    * AP: 192.168.0.1/24 (wlan0)
+* Rede internet: 150.164.10.0/25 (rede do laboratório)
+
+
+~~~~
+                   +------------+                           +------------+
+                   |      AP    |                           |     STA    |
+     150.164.10.yy |            |           wifi            |            |
+      internet ----|eth0  wlan0 |---------------------------|wlan0   eth0|---- rede de controle
+          |        |192.168.0.1    192.168.0.x              |            |150.164.10.yy
+          |        +------------+                           +------------+
+          |
+          |
+          | dash.winet.dcc.ufmg.br
+          | 150.164.10.51
+   +------------+
+   |  servidor  |
+   |  de video  |
+   +------------+
+~~~~
+
+
 # Configurando o roteamento nas estações
 
 ## acrescentar uma rota para acesso via rede local
@@ -45,21 +71,18 @@ Destino         Roteador        MáscaraGen.    Opções Métrica Ref   Uso Ifac
 ```
 
 
-# Diagrama de rede
+# Configurando o roteamento no AP
 
-~~~~
-                   +------------+                           +------------+
-                   |      AP    |                           |     STA    |
-     150.164.10.yy |            |           wifi            |            |
-      internet ----|eth0  wlan0 |---------------------------|wlan0   eth0|---- rede de controle
-          |        |192.168.0.1    192.168.0.x              |            |150.164.10.yy
-          |        +------------+                           +------------+
-          |
-          |
-          | dash.winet.dcc.ufmg.br
-          | 150.164.10.51
-   +------------+
-   |  servidor  |
-   |  de video  |
-   +------------+
-~~~~
+
+Cria o NAT para envio dos pacotes das estações para a rede "internet"
+
+```
+winet@gnu-nb3:~$ sudo iptables -F
+winet@gnu-nb3:~$ sudo iptables -t nat -F
+winet@gnu-nb3:~$ sudo iptables -X
+winet@gnu-nb3:~$ sudo iptables -P INPUT ACCEPT
+winet@gnu-nb3:~$ sudo iptables -P OUTPUT ACCEPT
+winet@gnu-nb3:~$ sudo iptables -P FORWARD ACCEPT
+winet@gnu-nb3:~$ sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j MASQUERADE
+winet@gnu-nb3:~$ sudo echo "1" >/proc/sys/net/ipv4/ip_forward
+```
