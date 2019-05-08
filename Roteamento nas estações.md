@@ -48,7 +48,6 @@ Destino         Roteador        MáscaraGen.    Opções Métrica Ref   Uso Ifac
 # Diagrama de rede
 
 ~~~~
-
                    +------------+                           +------------+
                    |      AP    |                           |     STA    |
      150.164.10.yy |            |           wifi            |            |
